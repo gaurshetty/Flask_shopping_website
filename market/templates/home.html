@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    Home Page
+{% endblock %}
+
+{% block body %}
+  <section class="jumbotron text-center">
+    <div class="container">
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+    <div class="col-4">
+      <div class="card shadow-sm" style="hi150px">
+          <img class="mb-4" src="https://i1.wp.com/www.globaltrademag.com/wp-content/uploads/2020/04/shutterstock_121120492.jpg?fit=699%2C393&ssl=1" alt="">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card shadow-sm">
+          <img class="mb-4" src="https://dfzpo2rwekd2c97nx20ixdth-wpengine.netdna-ssl.com/wp-content/uploads/online-shopping1.jpg" alt="">
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card shadow-sm">
+          <img class="mb-4" src="https://i1.wp.com/www.globaltrademag.com/wp-content/uploads/2020/04/shutterstock_121120492.jpg?fit=699%2C393&ssl=1" alt="">
+      </div>
+    </div>
+</div>
+
+      <h1 class="jumbotron-heading" style="color: black">GM Market</h1>
+      <p class="lead text-muted">This website help you to purchase different products available in the market. If
+          you dont like the product then you can sell back to market. All the product available in this market are
+          very cost efficient and quality products. To access this website you need to have a account on this
+          website. If you have already an account then use the following buttons to continue!
+      </p>
+      <p>
+        <a href="{{ url_for('users.login') }}" class="btn btn-primary my-2"> Login </a>
+        <a href="{{ url_for('users.register') }}" class="btn btn-secondary my-2">Register</a>
+      </p>
+    </div>
+  </section>
+
+
+{% endblock %}

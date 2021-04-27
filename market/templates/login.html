@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    Login Page
+{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="container" style="width: 400px; height: 200px">
+    <form method="POST" class="form-signin" style="color:white">
+        {{ form.hidden_tag() }}
+        <h2 class="h2 mb-3 font-weight-normal" align="center">User Login Page</h2>
+
+        {{ form.username.label() }}
+        {% if form.username.errors %}
+            {{ form.username(class="form-control is_invalid", placeholder="Enter Username") }}
+            <div class="invalid_feedback" style="color:red">
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.username(class="form-control", placeholder="Enter Username") }}
+        {% endif %}
+
+        {{ form.password.label() }}
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is_invalid", placeholder="Enter Password") }}
+            <div class="invalid_feedback" style="color:red">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.password(class="form-control", placeholder="Enter Password") }}
+        {% endif %}
+        <br>
+        <div class="form-check">
+            {{ form.remember(class="form-check-input") }}
+            {{ form.remember.label(class="form-check-label") }}
+        </div>
+        <br>
+        <div class="checkbox mb-3" align="center">
+            <h6>Do not have an account?</h6>
+            <a class="btn btn-sm btn-secondary" href="{{url_for('users.register')}}">Create Account</a>
+        </div>
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        <div class="text-muted ml-2" align="center">
+            <a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

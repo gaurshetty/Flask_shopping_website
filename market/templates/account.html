@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    Account Page
+{% endblock %}
+
+{% block body %}
+<body>
+<br>
+<div class="container" style="width: 500px; height: 200px">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.username }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+    <form method="POST" class="form-register" style="color:white" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <h2 class="h2 mb-3 font-weight-normal" align="center">Account Information</h2>
+
+        {{ form.username.label() }}
+        {% if form.username.errors %}
+            {{ form.username(class="form-control is_invalid", placeholder="Enter Username") }}
+            <div class="invalid_feedback" style="color:red">
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.username(class="form-control", placeholder="Enter Username") }}
+        {% endif %}
+
+        {{ form.email.label() }}
+        {% if form.email.errors %}
+            {{ form.email(class="form-control is_invalid", placeholder="Enter Email_Address") }}
+            <div class="invalid_feedback" style="color:red">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.email(class="form-control", placeholder="Enter Email_Address") }}
+        {% endif %}
+
+        {{ form.image_file.label() }}
+        {% if form.image_file.errors %}
+            {{ form.image_file(class="form-control is_invalid", placeholder="Choose profile picture:") }}
+            <div class="invalid_feedback" style="color:red">
+                {% for error in form.image_file.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.image_file(class="form-control", placeholder="Choose profile picture:") }}
+        {% endif %}
+
+        <br>
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        <br>
+    </form>
+</div>
+</body>
+{% endblock %}
